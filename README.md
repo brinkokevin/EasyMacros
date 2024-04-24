@@ -50,7 +50,7 @@ api.label("Hello, World!")
 
 * `text` (string): The text to display on the heading.
 * `options` (table, optional):
-	+ `font` (Enum.Font, optional): Specifies the font style used for the heading text.
+    + `font` (Enum.Font, optional): Specifies the font style used for the heading text.
 
 Example:
 ```lua
@@ -59,7 +59,7 @@ api.heading("Hello, World!")
 
 -- Heading with custom font
 api.heading("Hello, World!", {
-	font = Enum.Font.SourceSansBold
+    font = Enum.Font.SourceSansBold
 })
 ```
 
@@ -85,7 +85,7 @@ Example:
 ```lua
 local button = api.button("Hello, World!")
 if button:clicked() then
-	print("Button was clicked!")
+    print("Button was clicked!")
 end
 ```
 
@@ -94,8 +94,8 @@ end
 
 * `text` (string): Label displayed next to the checkbox.
 * `options` (table, optional):
-	+ `checked` (boolean, optional): Controlled state of the checkbox.
-	+ `disabled` (boolean, optional): Disables the checkbox.
+    + `checked` (boolean, optional): Controlled state of the checkbox.
+    + `disabled` (boolean, optional): Disables the checkbox.
 
 Returns a table with:
 * `getValue`: A function to check if the checkbox is checked.
@@ -105,26 +105,26 @@ Example:
 ```lua
 local isChecked = false
 local function render(api)
-	-- Uncontrolled checkbox
-	local checkbox = api.checkbox("Uncontrolled checkbox")
-	if checkbox:clicked() then
-		print("Checkbox was clicked, current state: " .. tostring(checkbox:getValue()))
-	end
+    -- Uncontrolled checkbox
+    local checkbox = api.checkbox("Uncontrolled checkbox")
+    if checkbox:clicked() then
+        print("Checkbox was clicked, current state: " .. tostring(checkbox:getValue()))
+    end
 
-	-- Controlled checkbox
-	local controlledCheckbox = api.checkbox("Controlled checkbox", {
-		checked = isChecked
-	})
-	if controlledCheckbox:clicked() then
-		isChecked = not isChecked
-		print("Controlled checkbox was clicked, current state: " .. tostring(isChecked))
-	end
+    -- Controlled checkbox
+    local controlledCheckbox = api.checkbox("Controlled checkbox", {
+        checked = isChecked
+    })
+    if controlledCheckbox:clicked() then
+        isChecked = not isChecked
+        print("Controlled checkbox was clicked, current state: " .. tostring(isChecked))
+    end
 
-	-- Disabled checkbox
-	api.checkbox("Disabled checkbox", {
-		checked = isChecked,
-		disabled = true
-	})
+    -- Disabled checkbox
+    api.checkbox("Disabled checkbox", {
+        checked = isChecked,
+        disabled = true
+    })
 end
 ```
 
@@ -133,9 +133,9 @@ end
 
 * `text` (string): Text displayed on the label.
 * `options` (table, optional):
-	+ `default` (number, optional): Initial numeric value.
-	+ `min` (number, optional): Minimum number constraint.
-	+ `max` (number, optional): Maximum number constraint.
+    + `default` (number, optional): Initial numeric value.
+    + `min` (number, optional): Minimum number constraint.
+    + `max` (number, optional): Maximum number constraint.
 
 Returns a table with:
 * `getValue`: A function to get the current numeric value, nil if invalid.
@@ -146,17 +146,17 @@ Example:
 -- Simple Number input
 local ageInput = api.numberinput("Age")
 if ageInput:valueChanged() then
-	print("New age: " .. tostring(ageInput:getValue()))
+    print("New age: " .. tostring(ageInput:getValue()))
 end
 
 -- Number input with constraints
 local numberInput = api.numberinput("Radius", {
-	default = 30,
-	min = 0,
-	max = 100,
+    default = 30,
+    min = 0,
+    max = 100,
 })
 if numberInput:valueChanged() then
-	print("New value: " .. tostring(numberInput:getValue()))
+    print("New value: " .. tostring(numberInput:getValue()))
 end
 ```
 
@@ -165,7 +165,7 @@ end
 
 * `text` (string): Text displayed on the label.
 * `options` (table, optional):
-	+ `default` (string, optional): Initial value.
+    + `default` (string, optional): Initial value.
 
 Returns a table with:
 * `getValue`: A function to get the current value, nil if invalid.
@@ -174,11 +174,11 @@ Returns a table with:
 Example:
 ```lua
 local numberInput = api.stringinput({
-	placeholder = "Attribute Name",
-	defaultValue = "Button",
+    placeholder = "Attribute Name",
+    defaultValue = "Button",
 })
 if numberInput.valueChanged() then
-	print("New value: " .. tostring(numberInput.value()))
+    print("New value: " .. tostring(numberInput.value()))
 end
 ```
 
