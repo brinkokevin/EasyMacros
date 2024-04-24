@@ -1,20 +1,20 @@
-# EasyMacros
-
-Documentation and Examples for EasyMacros roblox plugin
-
+--[[
 ## Getting Started with Easy Macros
 
-Welcome to Easy Macros! This documentation will guide you through the process of creating your own custom macros.
+Welcome to Easy Macros! This documentation will guide you through 
+the process of creating your own custom macros.
 
 ## Creating a Macro
 
-To set up a macro, first create a new ModuleScript and name it with the ".macro" suffix, like "MyMacro.macro". Alternatively, you can use the "Create Template" button in the Plugins tab to make a new macro.
+
+To set up a macro, first create a new ModuleScript and name it with 
+the ".macro" suffix, like "MyMacro.macro". Alternatively, you can 
+use the "Create Template" button in the Plugins tab to make a new macro.
 
 ## The Macro Template
 
 Here is a basic template for creating a macro
 
-```lua
 return {
     title = "My Macro",
     layoutOrder = 1,
@@ -22,32 +22,34 @@ return {
         -- Your macro code here
     end
 }
-```
 
 ## The `render` Function
 
-The `render` function is the heart of your macro. It's called every frame, and it's where you define the UI components of your macro. The `render` function takes an `api` object as an argument, which provides functions for creating UI components.
+The `render` function is the heart of your macro. It's called every 
+frame, and it's where you define the UI components of your macro. 
+The `render` function takes an `api` object as an argument, which 
+provides functions for creating UI components.
 
 ## Reactive Programming
 
-Easy Macros uses a modified version of Plasma, a reactive programming library. This means that the `render` function is called every frame, and it's up to you to manage the state of your macro. While understanding Plasma is not required, it can be helpful for more advanced use cases.
-[Plasma](https://eryn.io/plasma/docs/intro)
+Easy Macros uses a modified version of Plasma, a reactive programming 
+library. This means that the `render` function is called every frame, 
+and it's up to you to manage the state of your macro. While understanding 
+Plasma is not required, it can be helpful for more advanced use cases.
 
 ## API Documentation
-
-================
 
 ### Label
 
 Displays text
-
 * `text` (string): The text to display on the label.
 
-Example
+Example:
 
-```lua
-api.label("Hello, World!")
-```
+
+	api.label("Hello, World!")
+
+	
 
 ### Heading
 
@@ -57,17 +59,18 @@ Displays text but bigger!
 * `options` (table, optional):
   * `font` (Enum.Font, optional): Specifies the font style used for the heading text.
 
-Example
+Example:
 
-```lua
--- Heading with default font
-api.heading("Hello, World!")
 
--- Heading with custom font
-api.heading("Hello, World!", {
-    font = Enum.Font.SourceSansBold
-})
-```
+	-- Heading with default font
+	api.heading("Hello, World!")
+
+	-- Heading with custom font
+	api.heading("Hello, World!", {
+		font = Enum.Font.SourceSansBold,
+	})
+
+	
 
 ### Error
 
@@ -75,12 +78,12 @@ Displays an error message
 
 * `text` (string): The error message to display.
 
-Example
+Example:
 
-```lua
-api.error("Failed to execute macro!")
-```
 
+	api.error("Failed to execute macro!")
+
+	
 ### Button
 
 Creates a button
@@ -88,18 +91,17 @@ Creates a button
 * `text` (string): Text displayed on the button.
 
 Returns a table with the following functions:
-
 * `clicked`: A function to check if the button was clicked this frame.
 
-Example
+Example:
 
-```lua
-local button = api.button("Hello, World!")
-if button:clicked() then
-    print("Button was clicked!")
-end
-```
 
+	local button = api.button("Hello, World!")
+	if button:clicked() then
+		print("Button was clicked!")
+	end
+
+	
 ### Checkbox
 
 Creates a checkbox
@@ -110,73 +112,67 @@ Creates a checkbox
   * `disabled` (boolean, optional): Disables the checkbox.
 
 Returns a table with the following functions:
-
 * `getValue`: A function to check if the checkbox is checked.
 * `clicked`: A function to check if the checkbox was clicked this frame.
 
-Example
+Example:
 
-```lua
-local isChecked = false
-local function render(api)
-    -- Uncontrolled checkbox
-    local checkbox = api.checkbox("Uncontrolled checkbox")
-    if checkbox:clicked() then
-        print("Checkbox was clicked, current state: " .. tostring(checkbox:getValue()))
-    end
 
-    -- Controlled checkbox
-    local controlledCheckbox = api.checkbox("Controlled checkbox", {
-        checked = isChecked
-    })
-    if controlledCheckbox:clicked() then
-        isChecked = not isChecked
-        print("Controlled checkbox was clicked, current state: " .. tostring(isChecked))
-    end
+	local isChecked, setIsChecked = api.useState(false)
+	-- Uncontrolled checkbox
+	local checkbox = api.checkbox("Uncontrolled checkbox")
+	if checkbox:clicked() then
+		print("Checkbox was clicked, current state: " .. tostring(checkbox:getValue()))
+	end
 
-    -- Disabled checkbox
-    api.checkbox("Disabled checkbox", {
-        checked = isChecked,
-        disabled = true
-    })
-end
-```
+	-- Controlled checkbox
+	local controlledCheckbox = api.checkbox("Controlled checkbox", {
+		checked = isChecked,
+	})
+	if controlledCheckbox:clicked() then
+		setIsChecked(not isChecked)
+	end
 
+	-- Disabled checkbox
+	api.checkbox("Disabled checkbox", {
+		checked = isChecked,
+		disabled = true,
+	})
+	
 ### NumberInput
 
 Creates a number input field.
 
 * `text` (string): Text displayed on the label.
 * `options` (table, optional):
-  *`default` (number, optional): Initial numeric value.
-  *`min` (number, optional): Minimum number constraint.
-  *`max` (number, optional): Maximum number constraint.
+  * `default` (number, optional): Initial numeric value.
+  * `min` (number, optional): Minimum number constraint.
+  * `max` (number, optional): Maximum number constraint.
 
 Returns a table with the following functions:
-
 * `getValue`: A function to get the current numeric value, nil if invalid.
 * `valueChanged`: A function to check if the value has changed since the last frame.
 
-Example
+Example:
 
-```lua
--- Simple Number input
-local ageInput = api.numberinput("Age")
-if ageInput:valueChanged() then
-    print("New age: " .. tostring(ageInput:getValue()))
-end
 
--- Number input with constraints
-local numberInput = api.numberinput("Radius", {
-    default = 30,
-    min = 0,
-    max = 100,
-})
-if numberInput:valueChanged() then
-    print("New value: " .. tostring(numberInput:getValue()))
-end
-```
+	-- Simple Number input
+	local ageInput = api.numberinput("Age")
+	if ageInput:valueChanged() then
+		print("New age: " .. tostring(ageInput:getValue()))
+	end
 
+	-- Number input with constraints
+	local numberInput = api.numberinput("Radius", {
+		default = 30,
+		min = 0,
+		max = 100,
+	})
+	if numberInput:valueChanged() then
+		print("New value: " .. tostring(numberInput:getValue()))
+	end
+
+	
 ### StringInput
 
 Creates an input field for text.
@@ -186,28 +182,27 @@ Creates an input field for text.
   * `default` (string, optional): Initial value.
 
 Returns a table with the following functions:
-
 * `getValue`: A function to get the current value, nil if invalid.
 * `valueChanged`: A function to check if the value has changed since the last frame.
 
-Example
+Example:
 
-```lua
--- String input with no default value
-local stringInput = api.stringinput("String Input")
-if stringInput:valueChanged() then
-    print("New string: " .. tostring(stringInput:getValue()))
-end
 
--- String input with default value
-local defaultStringInput = api.stringinput("String Input with default value", {
-    default = "Hello, World!",
-})
-if defaultStringInput:valueChanged() then
-    print("New string: " .. tostring(defaultStringInput:getValue()))
-end
-```
+	-- String input with no default value
+	local stringInput = api.stringinput("String Input")
+	if stringInput:valueChanged() then
+		print("New string: " .. tostring(stringInput:getValue()))
+	end
 
+	-- String input with default value
+	local defaultStringInput = api.stringinput("String Input with default value", {
+		default = "Hello, World!",
+	})
+	if defaultStringInput:valueChanged() then
+		print("New string: " .. tostring(defaultStringInput:getValue()))
+	end
+
+	
 ### Hooks
 
 Advanced features for managing state and lifecycle events. With hooks you can create custom widgets, manage state and run functions post-render.
@@ -216,9 +211,8 @@ Advanced features for managing state and lifecycle events. With hooks you can cr
 
 Returns a state value and an update function.
 
-`api.useState(initialValue)`
+api.useState(initialValue)
 
-```lua
 local function render(api)
     local count, setCount = api.useState(0)
 
@@ -230,7 +224,6 @@ local function render(api)
 
     api.label("Count: " .. count)
 end
-```
 
 ### useEffect
 
@@ -238,9 +231,8 @@ Used to run a function when certain variables change. It can also be used to man
 
 You may add as many dependencies as you like, and the function will only run when any of the dependencies changes.
 
-`api.useEffect(callback, ...dependencies)`
+api.useEffect(callback, ...dependencies)
 
-```lua
 local function render(api)
     local instanceCount, setInstanceCount = api.useState(0)
 
@@ -267,4 +259,4 @@ local function render(api)
         print("Instance count changed to: " .. instanceCount)
     end, instanceCount)    
 end
-```
+]]
