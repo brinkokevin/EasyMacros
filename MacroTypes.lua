@@ -67,7 +67,7 @@ export type api = {
 	useState: <T>(initialValue: T) -> (T, (T | ((oldValue: T) -> T)) -> ()),
 	useEffect: (useEffectCallback, ...any) -> (),
 
-	scope: (callback: () -> (), ...any) -> (),
+	scope: (callback: (...any) -> (), ...any) -> (),
 }
 
 return nil
