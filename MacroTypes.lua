@@ -1,3 +1,5 @@
+-- EasyMacros:MacroTypes
+
 -- Label
 export type label = (text: string) -> ()
 
