@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[714],{63891:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/brinkokevin/EasyMacros/blob/main","baseUrl":"/EasyMacros/","classOrder":[],"apiCategories":["widgets","hooks","utilities"]}')}}]);

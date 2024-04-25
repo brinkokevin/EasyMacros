@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[286],{7636:s=>{s.exports=JSON.parse('[{"type":"link","href":"/api/EasyMacros","label":"\u200bEasy\u200bMacros"}]')}}]);
