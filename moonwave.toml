@@ -1,0 +1,31 @@
+title = "Easy Macros"
+
+gitSourceBranch = "main"
+changelog = false
+
+apiCategories = ["widgets", "hooks", "utilities"]
+
+[docusaurus]
+tagline = "Simplify your workflow!"
+favicon = "/logo.png"
+
+[[navbar.items]]
+href = "https://create.roblox.com/store/asset/17228863039"
+label = "Creator Store"
+position = "right"
+
+[home]
+enabled = true
+includeReadme = false # Optional
+
+[[home.features]]
+title = "Simple API"
+description = "Create buttons, labels, input boxes, and other widgets effortlessly."
+
+[[home.features]]
+title = "Fully Typed"
+description = "Enjoy the benefits of Luau with complete type support to catch issues faster and streamline your development process."
+
+[[home.features]]
+title = "Rojo Compatible"
+description = "Automatically detects any ModuleScript with a “.macro” extension, providing flexibility in script organization without relying on specific paths."

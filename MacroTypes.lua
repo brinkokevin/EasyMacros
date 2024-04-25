@@ -1,6 +1,3 @@
--- This file provides the types for the macro api
--- If you don't want to use types in your macro, you can delete this file
-
 -- Label
 export type label = (text: string) -> ()
 
@@ -66,8 +63,12 @@ export type api = {
 
 	useState: <T>(initialValue: T) -> (T, (T | ((oldValue: T) -> T)) -> ()),
 	useEffect: (useEffectCallback, ...any) -> (),
+	useInstance: (creator: (ref: {}) -> (Instance, Instance?)) -> { [string]: Instance },
+	useKey: (key: string) -> (),
 
 	scope: (callback: (...any) -> (), ...any) -> (),
+	create: (className: string, props: any) -> Instance,
+	widget: <T>(fn: (...T) -> ()) -> (...T) -> (),
 }
 
-return nil
+return {} :: api

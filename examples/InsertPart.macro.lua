@@ -4,6 +4,7 @@ the workspace. Here, you can see how to use buttons and
 ChangeHistoryService to record changes. The service allows 
 you to later undo or redo the changes made by the macro.
 ]]
+
 local MacroTypes = require(game.ServerStorage.MacroTypes)
 
 local ChangeHistoryService = game:GetService("ChangeHistoryService")
