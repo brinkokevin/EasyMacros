@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
-# How macros work
+# Understanding Render Function
 
 ## The `render` function
 

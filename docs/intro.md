@@ -12,7 +12,9 @@ Congratulations on taking the first step towards a more efficient and streamline
 
 Easy Macros provides a simple and intuitive API for creating UI components quickly. It's designed to be easy to use and understand, allowing you to focus on the functionality of your macros.
 
-Here is how you would code a simple button that anchors all parts in the selected model:
+## Simple Macro Example
+
+This macro demonstrates how to create a simple button that anchors all parts in the selected model. This example showcases the basic structure of a macro and how to use the Easy Macros API to create UI elements.
 
 ```lua
 -- Loop through all descendants of the part and anchor them
@@ -39,3 +41,7 @@ return {
     render = render,            -- The function to render UI elements
 }
 ```
+
+![Macro Example](/AnchorDemo.webp)
+
+More examples are available later in the documentation, showcasing various UI widgets like labels, input boxes, check boxes and buttons.
