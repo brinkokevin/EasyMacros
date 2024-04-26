@@ -1,0 +1,11 @@
+[package]
+name = "brinkokevin/easymacros"
+description = "MacroTypes module for the EasyMacros plugin"
+license = "MIT"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+include = ["default.project.json", "MacroTypes.lua", "wally.toml"]
+exclude = ["*"]
+
+[dependencies]

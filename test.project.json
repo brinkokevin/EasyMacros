@@ -1,0 +1,14 @@
+{
+	"name": "Easy Macros Test Place",
+	"tree": {
+		"$className": "DataModel",
+		"ServerStorage": {
+			"Macros": {
+				"$path": "examples"
+			},
+			"MacroTypes": {
+				"$path": "MacroTypes.lua"
+			}
+		}
+	}
+}
