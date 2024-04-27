@@ -1,4 +1,4 @@
--- EasyMacros:MacroTypes
+--easymacros (this comment is used to identify MacroTypes module)
 
 -- Label
 export type label = (text: string) -> ()
