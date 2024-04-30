@@ -65,7 +65,7 @@ export type api = {
 
 	useState: <T>(initialValue: T) -> (T, (T | ((oldValue: T) -> T)) -> ()),
 	useEffect: (useEffectCallback, ...any) -> (),
-	useInstance: (creator: (ref: {}) -> (Instance, Instance?)) -> { [string]: Instance },
+	useInstance: (creator: (ref: {}) -> (Instance, Instance?)) -> any,
 	useKey: (key: string) -> (),
 
 	scope: (callback: (...any) -> (), ...any) -> (),
