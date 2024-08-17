@@ -34,6 +34,7 @@ export type stringinputHandler = {
 }
 export type stringinput = (label: string, options: {
 	default: string?,
+	value: string?,
 }?) -> stringinputHandler
 
 -- Number Input
@@ -45,6 +46,7 @@ export type numberinput = (
 	label: string,
 	options: {
 		default: number?,
+		value: number?,
 		min: number?,
 		max: number?,
 	}?
