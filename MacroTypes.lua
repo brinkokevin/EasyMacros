@@ -52,6 +52,15 @@ export type numberinput = (
 	}?
 ) -> numberinputHandler
 
+-- Dropdown
+export type dropdownHandler = {
+	getValue: (self: dropdownHandler) -> string?,
+	valueChanged: (self: dropdownHandler) -> boolean,
+}
+export type dropdown = (label: string, items: { string }, options: {
+	value: string?,
+}?) -> dropdownHandler
+
 -- Hooks
 type destructor = () -> ()
 type useEffectCallback = (() -> destructor) | (() -> ())
@@ -64,6 +73,7 @@ export type api = {
 	checkbox: checkbox,
 	stringinput: stringinput,
 	numberinput: numberinput,
+	dropdown: dropdown,
 
 	useState: <T>(initialValue: T) -> (T, (T | ((oldValue: T) -> T)) -> ()),
 	useEffect: (useEffectCallback, ...any) -> (),
